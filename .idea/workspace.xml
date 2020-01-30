@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SHOW_STRUCTURE" value="true" />
+  </component>
+  <component name="AndroidGradleBuildConfiguration">
+    <option name="SYNC_PROJECT_BEFORE_BUILD" value="true" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="37fe3ce4-5292-4a9e-8592-af67e32a80f9" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="aws DB" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="aws DB" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="BOT" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1OpBOfkcaZUzow8GQ7oPp0fwTKG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ToolWindowRun.ShowToolbar" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last.edited.regexp" value="Sample Text" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/BOT" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ruby0\Documents\GitHub\discord_ritobot_logger\src\main\java\BOT" />
+      <recent name="C:\Users\ruby0\Documents\GitHub\DiscordBOT\src\main\java\BOT\Commands\Music" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="BOT.Objects" />
+      <recent name="BOT.Listener" />
+      <recent name="BOT.Commands.GreenServerCustom" />
+      <recent name="BOT.Commands" />
+      <recent name="BOT.Commands.Music" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ruby0\Documents\GitHub\DiscordBOT\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.DiscordBOT [shadowJar]">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BOT.App" />
+      <module name="BOT.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="getWeather" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BOT.objects.getWeather" />
+      <module name="BOT.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="BOT.objects.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiscordBOT [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="shadowJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="DiscordBOT [wrapper]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="wrapper" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Discord_BOT [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="test.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/main/java/BOT/Objects/test.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+        <item itemvalue="Gradle.Discord_BOT [dependencies]" />
+        <item itemvalue="Gradle.DiscordBOT [wrapper]" />
+        <item itemvalue="PHP Script.test.php" />
+        <item itemvalue="Application.getWeather" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="37fe3ce4-5292-4a9e-8592-af67e32a80f9" name="Default Changelist" comment="" />
+      <created>1561461423616</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1561461423616</updated>
+      <workItem from="1561461425184" duration="2609000" />
+      <workItem from="1561464969171" duration="9204000" />
+      <workItem from="1561535683528" duration="13637000" />
+      <workItem from="1561596706796" duration="4535000" />
+      <workItem from="1561602133249" duration="15400000" />
+      <workItem from="1561627864476" duration="7742000" />
+      <workItem from="1561677614012" duration="18611000" />
+      <workItem from="1561820726951" duration="2462000" />
+      <workItem from="1561973613436" duration="776000" />
+      <workItem from="1561974436104" duration="12773000" />
+      <workItem from="1563150125816" duration="575000" />
+      <workItem from="1563177571025" duration="1410000" />
+      <workItem from="1563179843277" duration="1952000" />
+      <workItem from="1563242432343" duration="1432000" />
+      <workItem from="1564664629886" duration="1010000" />
+      <workItem from="1564665826866" duration="2195000" />
+      <workItem from="1564670993467" duration="1031000" />
+      <workItem from="1564680441285" duration="4436000" />
+      <workItem from="1564758428561" duration="12939000" />
+      <workItem from="1564826656021" duration="9640000" />
+      <workItem from="1564844100122" duration="1060000" />
+      <workItem from="1564850081575" duration="1609000" />
+      <workItem from="1564906699907" duration="2318000" />
+      <workItem from="1564911505919" duration="76000" />
+      <workItem from="1564911625141" duration="6595000" />
+      <workItem from="1564931389491" duration="1140000" />
+      <workItem from="1565027979184" duration="31447000" />
+      <workItem from="1565116883053" duration="714000" />
+      <workItem from="1565118310407" duration="565000" />
+      <workItem from="1565119062099" duration="9086000" />
+      <workItem from="1565276427550" duration="29000" />
+      <workItem from="1565277189275" duration="24000" />
+      <workItem from="1565352055974" duration="12235000" />
+      <workItem from="1565418828360" duration="961000" />
+      <workItem from="1565425534656" duration="1172000" />
+      <workItem from="1565448295568" duration="22948000" />
+      <workItem from="1565523204787" duration="6085000" />
+      <workItem from="1565544887236" duration="5686000" />
+      <workItem from="1565834671797" duration="13919000" />
+      <workItem from="1565924769535" duration="2950000" />
+      <workItem from="1565931912769" duration="11131000" />
+      <workItem from="1566109587449" duration="2737000" />
+      <workItem from="1566172821345" duration="1198000" />
+      <workItem from="1566197581382" duration="22407000" />
+      <workItem from="1566302709568" duration="21042000" />
+      <workItem from="1566519081069" duration="2005000" />
+      <workItem from="1566609866771" duration="883000" />
+      <workItem from="1566864075860" duration="8354000" />
+      <workItem from="1566992146081" duration="933000" />
+      <workItem from="1567223023064" duration="5852000" />
+      <workItem from="1567232594566" duration="12394000" />
+      <workItem from="1567320662541" duration="12985000" />
+      <workItem from="1567389599884" duration="13844000" />
+      <workItem from="1567596260025" duration="5264000" />
+      <workItem from="1567658559495" duration="9878000" />
+      <workItem from="1567780851853" duration="2594000" />
+      <workItem from="1567858784856" duration="7538000" />
+      <workItem from="1567874956587" duration="777000" />
+      <workItem from="1567911363306" duration="10137000" />
+      <workItem from="1567933460422" duration="6946000" />
+      <workItem from="1567995395857" duration="7682000" />
+      <workItem from="1568006170982" duration="5157000" />
+      <workItem from="1568023574599" duration="1289000" />
+      <workItem from="1568026003512" duration="692000" />
+      <workItem from="1568030744569" duration="1867000" />
+      <workItem from="1568094611266" duration="10828000" />
+      <workItem from="1568203492591" duration="615000" />
+      <workItem from="1568206482270" duration="599000" />
+      <workItem from="1568268702080" duration="13164000" />
+      <workItem from="1568379160417" duration="6926000" />
+      <workItem from="1568444558355" duration="1734000" />
+      <workItem from="1568513398573" duration="5458000" />
+      <workItem from="1568529810289" duration="1482000" />
+      <workItem from="1568532927513" duration="2330000" />
+      <workItem from="1568547838939" duration="4986000" />
+      <workItem from="1568554349321" duration="643000" />
+      <workItem from="1568557059850" duration="38000" />
+      <workItem from="1568621808681" duration="751000" />
+      <workItem from="1568631147788" duration="750000" />
+      <workItem from="1568633539246" duration="1119000" />
+      <workItem from="1568695186602" duration="5077000" />
+      <workItem from="1568800034646" duration="7296000" />
+      <workItem from="1568849098153" duration="5849000" />
+      <workItem from="1569033486255" duration="10158000" />
+      <workItem from="1569131374280" duration="3127000" />
+      <workItem from="1569144904536" duration="4277000" />
+      <workItem from="1569156735090" duration="742000" />
+      <workItem from="1569161730926" duration="7541000" />
+      <workItem from="1569212750694" duration="2191000" />
+      <workItem from="1569216423209" duration="1913000" />
+      <workItem from="1569542803058" duration="13128000" />
+      <workItem from="1569670080026" duration="3802000" />
+      <workItem from="1569680284043" duration="12612000" />
+      <workItem from="1569743642947" duration="303000" />
+      <workItem from="1569743959373" duration="8964000" />
+      <workItem from="1569772761824" duration="1006000" />
+      <workItem from="1569774258789" duration="53000" />
+      <workItem from="1569802236872" duration="5961000" />
+      <workItem from="1569831389373" duration="778000" />
+      <workItem from="1569834299501" duration="2872000" />
+      <workItem from="1569889130964" duration="1512000" />
+      <workItem from="1569972240556" duration="12054000" />
+      <workItem from="1570428291334" duration="10261000" />
+      <workItem from="1570552532921" duration="879000" />
+      <workItem from="1570599283192" duration="729000" />
+      <workItem from="1570647799881" duration="1210000" />
+      <workItem from="1570650404409" duration="5837000" />
+      <workItem from="1570664778730" duration="21799000" />
+      <workItem from="1570854584694" duration="1847000" />
+      <workItem from="1571010605713" duration="818000" />
+      <workItem from="1571392226878" duration="8670000" />
+      <workItem from="1571471673871" duration="1994000" />
+      <workItem from="1571613513590" duration="3393000" />
+      <workItem from="1571659182619" duration="605000" />
+      <workItem from="1571731955117" duration="7057000" />
+      <workItem from="1571743105717" duration="603000" />
+      <workItem from="1571807285942" duration="323000" />
+      <workItem from="1572049302216" duration="2402000" />
+      <workItem from="1572219543982" duration="87000" />
+      <workItem from="1572223722013" duration="21654000" />
+      <workItem from="1572390911602" duration="32712000" />
+      <workItem from="1572531652947" duration="2354000" />
+      <workItem from="1572601102009" duration="3580000" />
+      <workItem from="1573095835502" duration="3920000" />
+      <workItem from="1573515960999" duration="2741000" />
+      <workItem from="1573648331085" duration="2181000" />
+      <workItem from="1573819053343" duration="53239000" />
+      <workItem from="1574490768262" duration="8578000" />
+      <workItem from="1576315014052" duration="4623000" />
+      <workItem from="1576407927918" duration="35812000" />
+      <workItem from="1576737621916" duration="2677000" />
+      <workItem from="1576797450914" duration="13183000" />
+      <workItem from="1576855151636" duration="23485000" />
+      <workItem from="1577058772990" duration="23997000" />
+      <workItem from="1577143555464" duration="15392000" />
+      <workItem from="1577212693785" duration="1126000" />
+      <workItem from="1577214749035" duration="5174000" />
+      <workItem from="1577319643274" duration="15533000" />
+      <workItem from="1577357233969" duration="3286000" />
+      <workItem from="1577460147944" duration="15483000" />
+      <workItem from="1577664997624" duration="15070000" />
+      <workItem from="1577896296448" duration="16881000" />
+      <workItem from="1578010007081" duration="9893000" />
+      <workItem from="1578130378274" duration="23882000" />
+      <workItem from="1578475434286" duration="34000" />
+      <workItem from="1578502384500" duration="608000" />
+      <workItem from="1578827398297" duration="8000" />
+      <workItem from="1578835982307" duration="6651000" />
+      <workItem from="1578898914458" duration="625000" />
+      <workItem from="1578914618943" duration="2941000" />
+      <workItem from="1578925102156" duration="36641000" />
+      <workItem from="1579483249148" duration="1361000" />
+      <workItem from="1579916464752" duration="3237000" />
+      <workItem from="1580021113726" duration="5711000" />
+      <workItem from="1580129763691" duration="493000" />
+      <workItem from="1580173543725" duration="3028000" />
+      <workItem from="1580353772789" duration="1685000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="541" y="194" key="#CLI_Interpreters" timestamp="1576729341736">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="541" y="194" key="#CLI_Interpreters/0.0.1920.1080@0.0.1920.1080" timestamp="1576729341736" />
+    <state x="662" y="127" key="#PHP" timestamp="1576729345023">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="662" y="127" key="#PHP/0.0.1920.1080@0.0.1920.1080" timestamp="1576729345023" />
+    <state x="552" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577006694061">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="552" y="197" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577006694061" />
+    <state x="765" y="248" key="#com.intellij.ide.util.MemberChooser" timestamp="1579465875362">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="765" y="248" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/0.-1080.1920.1080@0.0.1920.1080" timestamp="1577330268371" />
+    <state x="765" y="248" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1579465875362" />
+    <state x="640" y="264" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1577462210117">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="640" y="264" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080/0.-1080.1920.1080@0.0.1920.1080" timestamp="1577319502959" />
+    <state x="640" y="264" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577462210117" />
+    <state x="736" y="423" width="447" height="244" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1577096587021">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="736" y="423" width="447" height="244" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1080@0.0.1920.1080" timestamp="1577096587021" />
+    <state x="736" y="444" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1577552256774">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="736" y="444" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1080@0.0.1920.1080" timestamp="1577552256774" />
+    <state x="847" y="310" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580174934656">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="847" y="310" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1580174934656" />
+    <state x="676" y="226" key="#test.php" timestamp="1576729347564">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="676" y="226" key="#test.php/0.0.1920.1080@0.0.1920.1080" timestamp="1576729347564" />
+    <state x="613" y="383" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1577357023881">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="613" y="383" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080@0.0.1920.1080" timestamp="1577357023881" />
+    <state x="976" y="303" key="FileChooserDialogImpl" timestamp="1579035761102">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="976" y="303" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1579035761102" />
+    <state width="1873" height="263" key="GridCell.Tab.0.bottom" timestamp="1580356016860">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1873" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1080/0.-1080.1920.1080@0.-1080.1920.1080" timestamp="1578032539224" />
+    <state width="1873" height="344" key="GridCell.Tab.0.bottom/0.0.1920.1080/0.-1080.1920.1080@0.0.1920.1080" timestamp="1577664028685" />
+    <state width="1877" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576652988296" />
+    <state width="1873" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1580356016860" />
+    <state width="1873" height="263" key="GridCell.Tab.0.center" timestamp="1580356016860">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1873" height="269" key="GridCell.Tab.0.center/0.0.1920.1080/0.-1080.1920.1080@0.-1080.1920.1080" timestamp="1578032539224" />
+    <state width="1873" height="344" key="GridCell.Tab.0.center/0.0.1920.1080/0.-1080.1920.1080@0.0.1920.1080" timestamp="1577664028685" />
+    <state width="1877" height="289" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576652988296" />
+    <state width="1873" height="263" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1580356016860" />
+    <state width="1873" height="263" key="GridCell.Tab.0.left" timestamp="1580356016860">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1873" height="269" key="GridCell.Tab.0.left/0.0.1920.1080/0.-1080.1920.1080@0.-1080.1920.1080" timestamp="1578032539224" />
+    <state width="1873" height="344" key="GridCell.Tab.0.left/0.0.1920.1080/0.-1080.1920.1080@0.0.1920.1080" timestamp="1577664028685" />
+    <state width="1877" height="289" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576652988296" />
+    <state width="1873" height="263" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1580356016860" />
+    <state width="1873" height="263" key="GridCell.Tab.0.right" timestamp="1580356016860">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1873" height="269" key="GridCell.Tab.0.right/0.0.1920.1080/0.-1080.1920.1080@0.-1080.1920.1080" timestamp="1578032539224" />
+    <state width="1873" height="344" key="GridCell.Tab.0.right/0.0.1920.1080/0.-1080.1920.1080@0.0.1920.1080" timestamp="1577664028685" />
+    <state width="1877" height="289" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576652988296" />
+    <state width="1873" height="263" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1580356016860" />
+    <state x="540" y="273" key="IDE.errors.dialog" timestamp="1577214553770">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="540" y="273" key="IDE.errors.dialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577214553770" />
+    <state x="794" y="462" key="NewPhpFileDialog" timestamp="1576727338336">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="794" y="462" key="NewPhpFileDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1576727338336" />
+    <state x="128" y="201" key="SettingsEditor" timestamp="1580129775596">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="128" y="201" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1580129775596" />
+    <state width="200" height="461" key="SqlResolveConfigurable" timestamp="1576737323628">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="200" height="461" key="SqlResolveConfigurable/0.0.1920.1080@0.0.1920.1080" timestamp="1576737323628" />
+    <state x="542" y="287" key="caller.chooser.dialog" timestamp="1577355126452">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="542" y="287" key="caller.chooser.dialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577355126452" />
+    <state x="715" y="383" key="cloudConfig.SelfSettingsDialog" timestamp="1577926106118">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="715" y="383" key="cloudConfig.SelfSettingsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577926106118" />
+    <state x="676" y="176" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1577684862228">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="676" y="176" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577684862228" />
+    <state x="652" y="362" key="com.intellij.ide.util.TipDialog" timestamp="1578925342470">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="652" y="362" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/0.-1080.1920.1080@0.0.1920.1080" timestamp="1577665071293" />
+    <state x="652" y="362" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578925342470" />
+    <state x="578" y="216" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1576409645187">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="578" y="216" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1576409645187" />
+    <state x="445" y="50" width="1211" height="723" maximized="true" key="dock-window-1" timestamp="1576651894383">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="445" y="50" width="1211" height="723" maximized="true" key="dock-window-1/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576651894383" />
+    <state x="645" y="133" width="630" height="813" key="find.popup" timestamp="1577949399466">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="645" y="133" width="630" height="813" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577949399466" />
+    <state x="670" y="233" key="new project wizard" timestamp="1580129295515">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="670" y="233" key="new project wizard/0.0.1920.1080@0.0.1920.1080" timestamp="1580129295515" />
+    <state x="616" y="250" width="672" height="677" key="run.anything.popup" timestamp="1577962247406">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="616" y="250" width="672" height="677" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577962247406" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1579467686581">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1579467686581" />
+  </component>
+</project>

@@ -1,0 +1,1 @@
+worker: java -jar target/rito-bot-1.4.x-all.jar

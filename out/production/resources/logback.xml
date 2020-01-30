@@ -1,0 +1,31 @@
+<?xml version ="1.0" encoding = "UTF-8" ?>
+<configuration packagingData="true">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${C:/discordlog}/logback.log</file>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%d{yyyy-MM-dd HH:mm:sss}][%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${C:/discordlog}/logback.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern> [%d{yyyy-MM-dd HH:mm:sss}][%thread] %-5level %logger{35} - %msg%n </pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+    <appender-ref ref="STDOUT" />
+    </root>
+    <root level="warn">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>
