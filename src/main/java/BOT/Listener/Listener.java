@@ -82,7 +82,7 @@ public class Listener extends ListenerAdapter {
             return;
         }
         String channelId = SQL.configDownLoad_botchannel(event.getGuild().getId());
-        if(channelId.equals(event.getChannel().getId())) {
+        if(!channelId.equals(event.getChannel().getId())) {
             Member member = event.getMember();
             assert member != null;
             if(!(member.hasPermission(Permission.MESSAGE_MANAGE) ||
