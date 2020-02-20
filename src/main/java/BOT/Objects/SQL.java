@@ -69,6 +69,29 @@ public class SQL {
             e.printStackTrace();
         }
     }
+
+    public static String configDownLoad_botchannel(String guildId) {
+        String return_data = "error";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String queryString;
+            queryString = "SELECT * FROM ritobot_config.bot_channel WHERE guildId=" + guildId;
+            System.out.println(queryString);
+            loggingStatement = connection.createStatement();
+            resultSet6 = loggingStatement.executeQuery(queryString);
+            if (resultSet6.next()) {
+                if(resultSet6.getString("disable").equals("0")) {
+                    return_data = resultSet6.getString("channelId");
+                }
+            }
+            resultSet6.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return_data = "error";
+        }
+        return return_data;
+    }
+
     public static boolean loggingMessageUpLoad(String guildId, String messageId, String contentRaw, String authorId) {
         String queryString = "INSERT INTO messageLogging VALUE (" + guildId + ","+ messageId + ", '" + contentRaw + "'," + authorId +");";
         System.out.println(queryString);

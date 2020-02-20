@@ -3,6 +3,7 @@ package BOT.Listener;
 import BOT.App;
 import BOT.Constants;
 import BOT.Objects.CommandManager;
+import BOT.Objects.SQL;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
@@ -80,98 +81,21 @@ public class Listener extends ListenerAdapter {
 
             return;
         }
-        if(event.getGuild().getId().equals("600010501266866186")) {
-            if(!event.getChannel().getId().equals("600012818879741963")) {
-                if(!Objects.requireNonNull(event.getMember()).hasPermission(Permission.MANAGE_ROLES)) {
-                    Role role = event.getGuild().getRoleById("600012069559074822");
-                    if(!event.getMember().getRoles().contains(role)) {
-                        if(!event.getAuthor().getId().equals("278086240195182592")) {
-                            if (event.getMessage().getContentRaw().startsWith(App.getPREFIX())) {
-                                event.getChannel().sendMessage(event.getMember().getAsMention() + " , 명령어는 봇 명령어 채널에서 사용해주세요").complete().delete().queueAfter(7, TimeUnit.SECONDS);
-
-                                message.delete().queue();
-
-                                return;
-                            }
-                        } else {
-                            if(!event.getMessage().getContentRaw().startsWith(App.getPREFIX() + "투표")) {
-                                event.getChannel().sendMessage(event.getMember().getAsMention() + " , 명령어는 봇 명령어 채널에서 사용해주세요").complete().delete().queueAfter(7, TimeUnit.SECONDS);
-
-                                message.delete().queue();
-
-                                return;
-                            }
-                        }
-                    }
-                }
+        String channelId = SQL.configDownLoad_botchannel(event.getGuild().getId());
+        if(channelId.equals(event.getChannel().getId())) {
+            Member member = event.getMember();
+            assert member != null;
+            if(!(member.hasPermission(Permission.MESSAGE_MANAGE) ||
+                    member.hasPermission(Permission.MANAGE_CHANNEL) ||
+                    member.hasPermission(Permission.MANAGE_PERMISSIONS) ||
+                    member.hasPermission(Permission.MANAGE_ROLES) ||
+                    member.hasPermission(Permission.MANAGE_SERVER) ||
+                    member.hasPermission(Permission.ADMINISTRATOR))) {
+                return;
             }
         }
-        if(event.getGuild().getId().equals("617222347425972234")) {
-            if(!event.getChannel().getId().equals("617230917315854356")) {
-                if(!event.getChannel().getId().equals("617229595628011520")) {
-                    if (!Objects.requireNonNull(event.getMember()).hasPermission(Permission.MANAGE_ROLES)) {
-                        if (event.getMessage().getContentRaw().startsWith(Constants.PREFIX)) {
-                            event.getChannel().sendMessage(event.getMember().getAsMention() + " , 명령어는 봇 명령어 채널에서 사용해주세요").complete().delete().queueAfter(7, TimeUnit.SECONDS);
-
-                            message.delete().queue();
-
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-        if(event.getGuild().getId().equals("607390893804093442")) {
-            if(!event.getChannel().getId().equals("620095220729511977")) {
-                if(!Objects.requireNonNull(event.getMember()).hasPermission(Permission.MANAGE_ROLES)) {
-                    if (event.getMessage().getContentRaw().startsWith(Constants.PREFIX)) {
-                        event.getChannel().sendMessage(event.getMember().getAsMention() + " , 명령어는 봇 명령어 채널에서 사용해주세요").complete().delete().queueAfter(7, TimeUnit.SECONDS);
-
-                        message.delete().queue();
-
-                        return;
-                    }
-                }
-            }
-        }
-        if(event.getGuild().getId().equals("607390203086372866")) {
-            if(!event.getChannel().getId().equals("619271283586367498")) {
-                if(!Objects.requireNonNull(event.getMember()).hasPermission(Permission.MANAGE_ROLES)) {
-                    if (event.getMessage().getContentRaw().startsWith(Constants.PREFIX)) {
-                        event.getChannel().sendMessage(event.getMember().getAsMention() + " , 명령어는 봇 명령어 채널에서 사용해주세요").complete().delete().queueAfter(7, TimeUnit.SECONDS);
-
-                        message.delete().queue();
-
-                        return;
-                    }
-                }
-            }
-        }
-        if(event.getGuild().getId().equals("439780696999985172")) {
-            if(!event.getChannel().getId().equals("447727416660721665")) {
-                if(!Objects.requireNonNull(event.getMember()).hasPermission(Permission.MANAGE_ROLES)) {
-                    if (event.getMessage().getContentRaw().startsWith(Constants.PREFIX)) {
-                        event.getChannel().sendMessage(event.getMember().getAsMention() + " , 명령어는 봇 명령어 채널에서 사용해주세요").complete().delete().queueAfter(7, TimeUnit.SECONDS);
-
-                        message.delete().queue();
-
-                        return;
-                    }
-                }
-            }
-        }
-        if(event.getGuild().getId().equals("609985979167670272")) {
-            if(!event.getChannel().getId().equals("612293836458426378")) {
-                if(!Objects.requireNonNull(event.getMember()).hasPermission(Permission.MANAGE_ROLES)) {
-                    if (event.getMessage().getContentRaw().startsWith(Constants.PREFIX)) {
-                        event.getChannel().sendMessage(event.getMember().getAsMention() + " , 명령어는 봇 명령어 채널에서 사용해주세요").complete().delete().queueAfter(7, TimeUnit.SECONDS);
-
-                        message.delete().queue();
-
-                        return;
-                    }
-                }
-            }
+        if (event.getMessage().getContentRaw().startsWith(Constants.PREFIX)) {
+            manager.handleCommand(event);
         }
 
         if (event.getMessage().getContentRaw().startsWith(Constants.PREFIX)) {
