@@ -82,25 +82,24 @@ public class Listener extends ListenerAdapter {
             return;
         }
         String channelId = SQL.configDownLoad_botchannel(event.getGuild().getId());
-        if(!channelId.equals(event.getChannel().getId())) {
-            Member member = event.getMember();
-            assert member != null;
-            if(!(member.hasPermission(Permission.MESSAGE_MANAGE) ||
-                    member.hasPermission(Permission.MANAGE_CHANNEL) ||
-                    member.hasPermission(Permission.MANAGE_PERMISSIONS) ||
-                    member.hasPermission(Permission.MANAGE_ROLES) ||
-                    member.hasPermission(Permission.MANAGE_SERVER) ||
-                    member.hasPermission(Permission.ADMINISTRATOR))) {
-                return;
-            }
-        }
         if (event.getMessage().getContentRaw().startsWith(Constants.PREFIX)) {
+            if(!channelId.equals(event.getChannel().getId())) {
+                if(!channelId.equals("error")) {
+                    Member member = event.getMember();
+                    assert member != null;
+                    if (!(member.hasPermission(Permission.MESSAGE_MANAGE) ||
+                            member.hasPermission(Permission.MANAGE_CHANNEL) ||
+                            member.hasPermission(Permission.MANAGE_PERMISSIONS) ||
+                            member.hasPermission(Permission.MANAGE_ROLES) ||
+                            member.hasPermission(Permission.MANAGE_SERVER) ||
+                            member.hasPermission(Permission.ADMINISTRATOR))) {
+                        return;
+                    }
+                }
+            }
             manager.handleCommand(event);
         }
 
-        if (event.getMessage().getContentRaw().startsWith(Constants.PREFIX)) {
-            manager.handleCommand(event);
-        }
     }
     private void shutdown(@NotNull JDA jda, @NotNull GuildMessageReceivedEvent event) {
         new Thread(() -> {

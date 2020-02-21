@@ -8,7 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37fe3ce4-5292-4a9e-8592-af67e32a80f9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/BOT-1.7.x_logger-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/BOT-1.7.x_logger-all.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BOT/Listener/Listener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BOT/Listener/Listener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +119,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last.edited.regexp" value="Sample Text" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/BOT" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -244,7 +246,6 @@
         <item itemvalue="Application.App" />
         <item itemvalue="Gradle.Discord_BOT [dependencies]" />
         <item itemvalue="Gradle.DiscordBOT [wrapper]" />
-        <item itemvalue="PHP Script.test.php" />
         <item itemvalue="Application.getWeather" />
       </list>
     </recent_temporary>
@@ -430,6 +431,7 @@
       <workItem from="1580353772789" duration="2307000" />
       <workItem from="1582195517652" duration="755000" />
       <workItem from="1582216026676" duration="450000" />
+      <workItem from="1582244936741" duration="148000" />
     </task>
     <servers />
   </component>
@@ -498,37 +500,42 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="613" y="383" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080@0.0.1920.1080" timestamp="1577357023881" />
-    <state x="976" y="303" key="FileChooserDialogImpl" timestamp="1579035761102">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="-944" y="292" key="FileChooserDialogImpl" timestamp="1582244952246">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-944" y="292" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582244952246" />
     <state x="976" y="303" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1579035761102" />
-    <state width="1873" height="251" key="GridCell.Tab.0.bottom" timestamp="1582196458801">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1340" height="258" key="GridCell.Tab.0.bottom" timestamp="1582245086914">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1340" height="258" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582245086914" />
     <state width="1873" height="251" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582196458801" />
     <state width="1873" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1080/0.-1080.1920.1080@0.-1080.1920.1080" timestamp="1578032539224" />
     <state width="1873" height="344" key="GridCell.Tab.0.bottom/0.0.1920.1080/0.-1080.1920.1080@0.0.1920.1080" timestamp="1577664028685" />
     <state width="1877" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576652988296" />
     <state width="1873" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1580492440414" />
-    <state width="1873" height="251" key="GridCell.Tab.0.center" timestamp="1582196458801">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1340" height="258" key="GridCell.Tab.0.center" timestamp="1582245086914">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1340" height="258" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582245086914" />
     <state width="1873" height="251" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582196458801" />
     <state width="1873" height="269" key="GridCell.Tab.0.center/0.0.1920.1080/0.-1080.1920.1080@0.-1080.1920.1080" timestamp="1578032539224" />
     <state width="1873" height="344" key="GridCell.Tab.0.center/0.0.1920.1080/0.-1080.1920.1080@0.0.1920.1080" timestamp="1577664028685" />
     <state width="1877" height="289" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576652988296" />
     <state width="1873" height="263" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1580492440414" />
-    <state width="1873" height="251" key="GridCell.Tab.0.left" timestamp="1582196458801">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1340" height="258" key="GridCell.Tab.0.left" timestamp="1582245086914">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1340" height="258" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582245086914" />
     <state width="1873" height="251" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582196458801" />
     <state width="1873" height="269" key="GridCell.Tab.0.left/0.0.1920.1080/0.-1080.1920.1080@0.-1080.1920.1080" timestamp="1578032539224" />
     <state width="1873" height="344" key="GridCell.Tab.0.left/0.0.1920.1080/0.-1080.1920.1080@0.0.1920.1080" timestamp="1577664028685" />
     <state width="1877" height="289" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1576652988296" />
     <state width="1873" height="263" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1580492440414" />
-    <state width="1873" height="251" key="GridCell.Tab.0.right" timestamp="1582196458801">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1340" height="258" key="GridCell.Tab.0.right" timestamp="1582245086914">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1340" height="258" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582245086914" />
     <state width="1873" height="251" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582196458801" />
     <state width="1873" height="269" key="GridCell.Tab.0.right/0.0.1920.1080/0.-1080.1920.1080@0.-1080.1920.1080" timestamp="1578032539224" />
     <state width="1873" height="344" key="GridCell.Tab.0.right/0.0.1920.1080/0.-1080.1920.1080@0.0.1920.1080" timestamp="1577664028685" />
@@ -542,9 +549,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="794" y="462" key="NewPhpFileDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1576727338336" />
-    <state x="128" y="201" key="SettingsEditor" timestamp="1580129775596">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="-1792" y="194" key="SettingsEditor" timestamp="1582244960411">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1792" y="194" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582244960411" />
     <state x="128" y="201" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1580129775596" />
     <state width="200" height="461" key="SqlResolveConfigurable" timestamp="1576737323628">
       <screen x="0" y="0" width="1920" height="1080" />
