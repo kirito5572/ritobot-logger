@@ -8,10 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37fe3ce4-5292-4a9e-8592-af67e32a80f9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/BOT-1.7.x_logger-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/BOT-1.7.x_logger-all.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BOT/Listener/Listener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BOT/Listener/Listener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +126,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -432,6 +429,7 @@
       <workItem from="1582195517652" duration="755000" />
       <workItem from="1582216026676" duration="450000" />
       <workItem from="1582244936741" duration="148000" />
+      <workItem from="1582245906895" duration="698000" />
     </task>
     <servers />
   </component>
@@ -549,10 +547,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="794" y="462" key="NewPhpFileDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1576727338336" />
-    <state x="-1792" y="194" key="SettingsEditor" timestamp="1582244960411">
+    <state x="-1792" y="189" key="SettingsEditor" timestamp="1582246604920">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1792" y="194" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582244960411" />
+    <state x="-1792" y="189" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582246604920" />
     <state x="128" y="201" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1580129775596" />
     <state width="200" height="461" key="SqlResolveConfigurable" timestamp="1576737323628">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -599,5 +597,16 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1579467686581" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/BOT/Listener/Listener.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
