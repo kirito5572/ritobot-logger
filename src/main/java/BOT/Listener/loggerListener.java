@@ -1,6 +1,5 @@
 package BOT.Listener;
 
-import BOT.App;
 import BOT.Objects.SQL;
 import BOT.Objects.config;
 import me.duncte123.botcommons.messaging.EmbedUtils;
@@ -19,6 +18,9 @@ import net.dv8tion.jda.api.events.emote.*;
 import net.dv8tion.jda.api.events.guild.*;
 import net.dv8tion.jda.api.events.guild.member.*;
 import net.dv8tion.jda.api.events.guild.member.update.GuildMemberUpdateNicknameEvent;
+import net.dv8tion.jda.api.events.guild.override.PermissionOverrideCreateEvent;
+import net.dv8tion.jda.api.events.guild.override.PermissionOverrideDeleteEvent;
+import net.dv8tion.jda.api.events.guild.override.PermissionOverrideUpdateEvent;
 import net.dv8tion.jda.api.events.guild.voice.GuildVoiceGuildMuteEvent;
 import net.dv8tion.jda.api.events.message.MessageBulkDeleteEvent;
 import net.dv8tion.jda.api.events.message.guild.*;
@@ -35,12 +37,14 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 public class loggerListener extends ListenerAdapter {
+    private final SQL sql;
+    public loggerListener(SQL sql) {
+        this.sql = sql;
+    }
 
     @Override
     public void onGuildMessageReceived(@Nonnull GuildMessageReceivedEvent event) {
@@ -69,19 +73,21 @@ public class loggerListener extends ListenerAdapter {
                 if (messageContent.contains("\\'")) {
                     messageContent = messageContent.replace("\\'", "\\\\'");
                 }
-                final boolean[] temp = {SQL.loggingMessageUpLoad(guild.getId(), messageId, messageContent, authorId)};
+                final boolean[] temp = {sql.loggingMessageUpLoad(guild.getId(), messageId, messageContent, authorId)};
                 String finalMessageContent = messageContent;
-                new Thread(() -> {
-                    while (!temp[0]) {
-                        temp[0] = SQL.loggingMessageUpLoad(guild.getId(), messageId, finalMessageContent, authorId);
-                        try {
-                            System.out.println(temp[0]);
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                Timer timer = new Timer();
+                TimerTask timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        temp[0] = sql.loggingMessageUpLoad(guild.getId(), messageId, finalMessageContent, authorId);
+                        if(temp[0]) {
+                            timer.cancel();
                         }
                     }
-                }).start();
+                };
+                if(!temp[0]) {
+                    timer.scheduleAtFixedRate(timerTask, 0, 1000);
+                }
             }
         }
     }
@@ -103,35 +109,26 @@ public class loggerListener extends ListenerAdapter {
                 if (event.getAuthor().isBot()) {
                     return;
                 }
-                while (messageContent.contains("\\")) {
-                    messageContent = messageContent.replace("\\", "");
-                }
-                while (messageContent.contains("'")) {
-                    messageContent = messageContent.replaceFirst("'", "");
-                }
-                while (messageContent.contains("\"")) {
-                    messageContent = messageContent.replaceFirst("\"", "");
-                }
-                String finalMessageContent = messageContent;
-                String[] data = SQL.loggingMessageDownLoad(guild.getId(), messageId);
+                String[] data = sql.loggingMessageDownLoad(guild.getId(), messageId);
                 if(data[0] == null) {
                     return;
                 }
                 if (data[0].length() < 2) {
                     return;
                 }
-                final boolean[] temp = {SQL.loggingMessageUpdate(guild.getId(), messageId, messageContent)};
-                new Thread(() -> {
-                    while (!temp[0]) {
-                        temp[0] = SQL.loggingMessageUpdate(guild.getId(), messageId, finalMessageContent);
-                        try {
-                            System.out.println(temp[0]);
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                final boolean[] temp = {sql.loggingMessageUpdate(guild.getId(), messageId, messageContent)};
+                Timer timer = new Timer();
+                TimerTask timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        temp[0] = sql.loggingMessageUpdate(guild.getId(), messageId, messageContent);
+                        if(temp[0]) {
+                            timer.cancel();
                         }
                     }
-                }).start();
+                };
+                timer.scheduleAtFixedRate(timerTask, 0, 1000);
+
                 Member member = event.getGuild().getMemberById(authorId);
                 assert member != null;
                 SimpleDateFormat format2 = new SimpleDateFormat("yyyy년 MM월dd일 HH시mm분ss초");
@@ -143,10 +140,20 @@ public class loggerListener extends ListenerAdapter {
                         .setTitle("수정된 메세지")
                         .setColor(Color.ORANGE)
                         .setDescription("메세지 수정: " + event.getChannel().getAsMention() + "\n" +
-                                "[메세지 이동](" + message.getJumpUrl() + ")")
-                        .addField("수정전 내용", data[0], false)
-                        .addField("수정후 내용", messageContent, false)
-                        .addField("수정 시간", time2, false)
+                                "[메세지 이동](" + message.getJumpUrl() + ")");
+                try {
+                    builder.addField("수정전 내용", data[0], false);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    builder.addField("수정전 내용", "1024자 이상이라서 표현할 수 없습니다.", false);
+                }
+                try {
+                    builder.addField("수정후 내용", messageContent, false);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    builder.addField("수정후 내용", "1024자 이상이라서 표현할 수 없습니다.", false);
+                }
+                builder.addField("수정 시간", time2, false)
                         .setFooter((member.getEffectiveName() + "(" + member.getEffectiveName() + ")"), member.getUser().getAvatarUrl());
                 messageLoggingSend(builder, guild);
             }
@@ -164,7 +171,7 @@ public class loggerListener extends ListenerAdapter {
 
         String time2 = format2.format(time);
         for (String messageId : ids) {
-            String[] data = SQL.loggingMessageDownLoad(guild.getId(), messageId);
+            String[] data = sql.loggingMessageDownLoad(guild.getId(), messageId);
             if (data[0].length() < 2) {
                 return;
             } else {
@@ -181,7 +188,7 @@ public class loggerListener extends ListenerAdapter {
         Guild guild = event.getGuild();
         for(String guild1 : config.getTextLoggingEnable()) {
             if (guild.getId().equals(guild1)) {
-                String[] data = SQL.loggingMessageDownLoad(guild.getId(), messageId);
+                String[] data = sql.loggingMessageDownLoad(guild.getId(), messageId);
                 try {
                     if (data[0].length() < 2) {
                         return;
@@ -209,39 +216,77 @@ public class loggerListener extends ListenerAdapter {
         }
     }
     private void messageLoggingSend(@NotNull EmbedBuilder builder, @NotNull Guild guild) {
-        List<TextChannel> channels = guild.getTextChannelsByName("채팅-로그", false);
-        if(!channels.isEmpty()) {
-            channels.get(0).sendMessage(builder.build()).queue();
-        } else {
-            List<TextChannel> channels1 = guild.getTextChannelsByName("chat-logs", false);
-            if(!channels.isEmpty()) {
-                channels1.get(0).sendMessage(builder.build()).queue();
+        String channelId = sql.configDownLoad_channel(guild.getId(), SQL.textLogChannel);
+        boolean a = false;
+        if(!channelId.equals("error")) {
+            try {
+                Objects.requireNonNull(guild.getTextChannelById(channelId)).sendMessage(builder.build()).queue();
+                a = true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                a = false;
             }
         }
-
+        if(!a) {
+            List<TextChannel> channels = guild.getTextChannelsByName("채팅-로그", false);
+            if (!channels.isEmpty()) {
+                channels.get(0).sendMessage(builder.build()).queue();
+            } else {
+                List<TextChannel> channels1 = guild.getTextChannelsByName("chat-logs", false);
+                if (!channels.isEmpty()) {
+                    channels1.get(0).sendMessage(builder.build()).queue();
+                }
+            }
+        }
     }
 
     private void channelLoggingSend(@NotNull EmbedBuilder builder, @NotNull Guild guild) {
-        List<TextChannel> channels = guild.getTextChannelsByName("채널-로그", false);
-        if(!channels.isEmpty()) {
-            channels.get(0).sendMessage(builder.build()).queue();
-        } else {
-            List<TextChannel> channels1 = guild.getTextChannelsByName("channel-logs", false);
-            if(!channels.isEmpty()) {
-                channels1.get(0).sendMessage(builder.build()).queue();
+        String channelId = sql.configDownLoad_channel(guild.getId(), SQL.textLogChannel);
+        boolean a = false;
+        if(!channelId.equals("error")) {
+            try {
+                Objects.requireNonNull(guild.getTextChannelById(channelId)).sendMessage(builder.build()).queue();
+                a = true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                a = false;
+            }
+        }
+        if(!a) {
+            List<TextChannel> channels = guild.getTextChannelsByName("채널-로그", false);
+            if (!channels.isEmpty()) {
+                channels.get(0).sendMessage(builder.build()).queue();
+            } else {
+                List<TextChannel> channels1 = guild.getTextChannelsByName("channel-logs", false);
+                if (!channels.isEmpty()) {
+                    channels1.get(0).sendMessage(builder.build()).queue();
+                }
             }
         }
 
     }
 
     private void memberLoggingSend(@NotNull EmbedBuilder builder, @NotNull Guild guild) {
-        List<TextChannel> channels = guild.getTextChannelsByName("멤버-로그", false);
-        if(!channels.isEmpty()) {
-            channels.get(0).sendMessage(builder.build()).queue();
-        } else {
-            List<TextChannel> channels1 = guild.getTextChannelsByName("member-logs", false);
-            if(!channels.isEmpty()) {
-                channels1.get(0).sendMessage(builder.build()).queue();
+        String channelId = sql.configDownLoad_channel(guild.getId(), SQL.textLogChannel);
+        boolean a = false;
+        if(!channelId.equals("error")) {
+            try {
+                Objects.requireNonNull(guild.getTextChannelById(channelId)).sendMessage(builder.build()).queue();
+                a = true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                a = false;
+            }
+        }
+        if(!a) {
+            List<TextChannel> channels = guild.getTextChannelsByName("멤버-로그", false);
+            if (!channels.isEmpty()) {
+                channels.get(0).sendMessage(builder.build()).queue();
+            } else {
+                List<TextChannel> channels1 = guild.getTextChannelsByName("member-logs", false);
+                if (!channels.isEmpty()) {
+                    channels1.get(0).sendMessage(builder.build()).queue();
+                }
             }
         }
 
@@ -251,8 +296,8 @@ public class loggerListener extends ListenerAdapter {
     public void onReconnect(@Nonnull ReconnectedEvent event) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            SQL.setLoggingConnection(DriverManager.getConnection(SQL.getUrl(), SQL.getUser(), SQL.getPassword()));
-            SQL.setConnection(DriverManager.getConnection(SQL.getUrl(), SQL.getUser(), SQL.getPassword()));
+            sql.setLoggingConnection(DriverManager.getConnection(sql.getUrl(), sql.getUser(), sql.getPassword()));
+            SQL.reConnection();
         } catch (@NotNull SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
@@ -262,7 +307,7 @@ public class loggerListener extends ListenerAdapter {
     public void onGuildJoin(@Nonnull GuildJoinEvent event) {
         String guildId = event.getGuild().getId();
         try {
-            Statement statement = SQL.getConnection().createStatement();
+            Statement statement = sql.getConnection().createStatement();
             statement.executeUpdate("INSERT INTO ritobot_config.color_command_guild VALUES (" + guildId + ", 1)");
             statement.executeUpdate("INSERT INTO ritobot_config.filter_guild VALUES (" + guildId + ", 0)");
             statement.executeUpdate("INSERT INTO ritobot_config.kill_filter_guild VALUES (" + guildId + ", 0)");
@@ -271,6 +316,9 @@ public class loggerListener extends ListenerAdapter {
             statement.executeUpdate("INSERT INTO ritobot_config.logging_enable VALUES (" + guildId + ", 1, 1, 1)");
             statement.executeUpdate("INSERT INTO ritobot_config.notice VALUES (" + guildId + ", 0, '0')");
             statement.executeUpdate("INSERT INTO ritobot_config.filter_output_channel VALUES (" + guildId + ", 0, '1')");
+            statement.executeUpdate("INSERT INTO ritobot_config.bot_channel VALUES (" + guildId + " , 0 , 1)");
+            statement.executeUpdate("INSERT INTO ritobot_config.custom_Filter VALUES (" + guildId + ", 1, '{\"data\": [\"none\"]}')");
+            statement.executeUpdate("INSERT INTO ritobot_config.log_channel VALUES (" + guildId + ", 0, 0, 0)");
             statement.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -324,40 +372,130 @@ public class loggerListener extends ListenerAdapter {
     }
 
     @Override
-    public void onTextChannelUpdatePermissions(@Nonnull TextChannelUpdatePermissionsEvent event) {
-        super.onTextChannelUpdatePermissions(event);
-        /*
+    public void onPermissionOverrideCreate(@Nonnull PermissionOverrideCreateEvent event) {
         Guild guild = event.getGuild();
-        for(String guild1 : config.getChannelLoggingEnable()) {
-            if (guild.getId().equals(guild1)) {
+        for(String guildId : config.getChannelLoggingEnable()) {
+            if(guild.getId().equals(guildId)) {
                 SimpleDateFormat format2 = new SimpleDateFormat("yyyy년 MM월dd일 HH시mm분ss초");
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-
-                StringBuilder builder1 = new StringBuilder();
-                StringBuilder builder2 = new StringBuilder();
-                for(int i = 0; i < event.getChangedRoles().size(); i++) {
-                    builder1.append(event.getChangedRoles().get(i).getName()).append("\n");
-                    builder1.append(event.getChangedPermissionHolders().get(i).getPermissions(event.getChannel()).toString()).append("\n\n");
+                EmbedBuilder builder = EmbedUtils.defaultEmbed();
+                StringBuilder stringBuilder = new StringBuilder();
+                for(Permission permission : event.getPermissionOverride().getAllowed()) {
+                    stringBuilder.append("\u2795").append(permission.getName()).append("\n");
                 }
-                for(int i = 0; i < event.getChangedMembers().size(); i++) {
-                    builder2.append(event.getChangedMembers().get(i).getEffectiveName()).append("\n");
-                    builder2.append(event.getChangedPermissionHolders().get(i).getPermissions(event.getChannel()).toString()).append("\n\n");
+                switch(event.getChannelType()) {
+                    case CATEGORY:
+                        if (event.getPermissionOverride().isRoleOverride()) {
+                            builder.setTitle("카테고리 권한 오버라이딩 생성")
+                                    .setColor(Color.GREEN)
+                                    .addField("카테고리명", event.getCategory().getName(), false)
+                                    .addField("변경된 권한(" + Objects.requireNonNull(event.getPermissionOverride().getRole()).getAsMention() + ")", stringBuilder.toString(), false)
+                                    .addField("변경 시간", time2, false);
+                        } else if(event.getPermissionOverride().isMemberOverride()) {
+                            builder.setTitle("카테고리 권한 오버라이딩 생성")
+                                    .setColor(Color.GREEN)
+                                    .addField("카테고리명", event.getCategory().getName(), false)
+                                    .addField("변경된 권한(" + Objects.requireNonNull(event.getPermissionOverride().getMember()).getAsMention() + ")", stringBuilder.toString(), false)
+                                    .addField("변경 시간", time2, false);
+                        }
+                        break;
+                    case TEXT:
+                        if (event.getPermissionOverride().isRoleOverride()) {
+                            builder.setTitle("텍스트 채널 권한 오버라이딩 생성")
+                                    .setColor(Color.GREEN)
+                                    .addField("채널명", event.getCategory().getName(), false)
+                                    .addField("변경된 권한(" + Objects.requireNonNull(event.getPermissionOverride().getRole()).getAsMention() + ")", stringBuilder.toString(), false)
+                                    .addField("변경 시간", time2, false);
+                        } else if(event.getPermissionOverride().isMemberOverride()) {
+                            builder.setTitle("텍스트 채널 권한 오버라이딩 생성")
+                                    .setColor(Color.GREEN)
+                                    .addField("채널명", event.getCategory().getName(), false)
+                                    .addField("변경된 권한(" + Objects.requireNonNull(event.getPermissionOverride().getMember()).getAsMention() + ")", stringBuilder.toString(), false)
+                                    .addField("변경 시간", time2, false);
+                        }
+                        break;
+                    case VOICE:
+                        if (event.getPermissionOverride().isRoleOverride()) {
+                            builder.setTitle("보이스 채널 권한 오버라이딩 생성")
+                                    .setColor(Color.GREEN)
+                                    .addField("채널명", event.getCategory().getName(), false)
+                                    .addField("변경된 권한(" + Objects.requireNonNull(event.getPermissionOverride().getRole()).getAsMention() + ")", stringBuilder.toString(), false)
+                                    .addField("변경 시간", time2, false);
+                        } else if(event.getPermissionOverride().isMemberOverride()) {
+                            builder.setTitle("보이스 채널 권한 오버라이딩 생성")
+                                    .setColor(Color.GREEN)
+                                    .addField("채널명", event.getCategory().getName(), false)
+                                    .addField("변경된 권한(" + Objects.requireNonNull(event.getPermissionOverride().getMember()).getAsMention() + ")", stringBuilder.toString(), false)
+                                    .addField("변경 시간", time2, false);
+                        }
+                        break;
                 }
-
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
-                        .setTitle("텍스트 채널 권한 변경")
-                        .setColor(Color.GREEN)
-                        .addField("채널명", event.getChannel().getName(), false)
-                        .addField("변경된 권한(역할)", builder1.toString(), false)
-                        .addField("변경된 권한(멤버)", builder2.toString(), false)
-                        .addField("변경 시간", time2, false);
                 channelLoggingSend(builder, guild);
             }
         }
+    }
 
-         */
+    @Override
+    public void onPermissionOverrideUpdate(@Nonnull PermissionOverrideUpdateEvent event) {
+        super.onPermissionOverrideUpdate(event);
+    }
+
+    @Override
+    public void onPermissionOverrideDelete(@Nonnull PermissionOverrideDeleteEvent event) {
+        Guild guild = event.getGuild();
+        for(String guildId : config.getChannelLoggingEnable()) {
+            if(guild.getId().equals(guildId)) {
+                SimpleDateFormat format2 = new SimpleDateFormat("yyyy년 MM월dd일 HH시mm분ss초");
+                Date time = new Date();
+
+                String time2 = format2.format(time);
+                EmbedBuilder builder = EmbedUtils.defaultEmbed();
+                switch(event.getChannelType()) {
+                    case CATEGORY:
+                        if (event.getPermissionOverride().isRoleOverride()) {
+                            builder.setTitle("카테고리 권한 오버라이딩 삭제")
+                                    .setColor(Color.GREEN)
+                                    .addField("카테고리명", event.getCategory().getName(), false)
+                                    .addField("변경 시간", time2, false);
+                        } else if(event.getPermissionOverride().isMemberOverride()) {
+                            builder.setTitle("카테고리 권한 오버라이딩 삭제")
+                                    .setColor(Color.GREEN)
+                                    .addField("카테고리명", event.getCategory().getName(), false)
+                                    .addField("변경 시간", time2, false);
+                        }
+                        break;
+                    case TEXT:
+                        if (event.getPermissionOverride().isRoleOverride()) {
+                            builder.setTitle("텍스트 채널 권한 오버라이딩 삭제")
+                                    .setColor(Color.GREEN)
+                                    .addField("채널명", event.getCategory().getName(), false)
+                                    .addField("변경 시간", time2, false);
+                        } else if(event.getPermissionOverride().isMemberOverride()) {
+                            builder.setTitle("텍스트 채널 권한 오버라이딩 삭제")
+                                    .setColor(Color.GREEN)
+                                    .addField("채널명", event.getCategory().getName(), false)
+                                    .addField("변경 시간", time2, false);
+                        }
+                        break;
+                    case VOICE:
+                        if (event.getPermissionOverride().isRoleOverride()) {
+                            builder.setTitle("보이스 채널 권한 오버라이딩 삭제")
+                                    .setColor(Color.GREEN)
+                                    .addField("채널명", event.getCategory().getName(), false)
+                                    .addField("변경 시간", time2, false);
+                        } else if(event.getPermissionOverride().isMemberOverride()) {
+                            builder.setTitle("보이스 채널 권한 오버라이딩 삭제")
+                                    .setColor(Color.GREEN)
+                                    .addField("채널명", event.getCategory().getName(), false)
+                                    .addField("변경 시간", time2, false);
+                        }
+                        break;
+                }
+                channelLoggingSend(builder, guild);
+            }
+        }
     }
 
     @Override
@@ -548,11 +686,6 @@ public class loggerListener extends ListenerAdapter {
     }
 
     @Override
-    public void onVoiceChannelUpdatePermissions(@Nonnull VoiceChannelUpdatePermissionsEvent event) {
-        super.onVoiceChannelUpdatePermissions(event);
-    }
-
-    @Override
     public void onCategoryDelete(@Nonnull CategoryDeleteEvent event) {
         Guild guild = event.getGuild();
         for(String guild1 : config.getChannelLoggingEnable()) {
@@ -589,11 +722,6 @@ public class loggerListener extends ListenerAdapter {
                 channelLoggingSend(builder, guild);
             }
         }
-    }
-
-    @Override
-    public void onCategoryUpdatePermissions(@Nonnull CategoryUpdatePermissionsEvent event) {
-        super.onCategoryUpdatePermissions(event);
     }
 
     @Override
@@ -637,7 +765,7 @@ public class loggerListener extends ListenerAdapter {
     }
 
     @Override
-    public void onGuildMemberLeave(@Nonnull GuildMemberLeaveEvent event) {
+    public void onGuildMemberRemove(@Nonnull GuildMemberRemoveEvent event) {
         Guild guild = event.getGuild();
         for(String guild1 : config.getMemberLoggingEnable()) {
             if (guild.getId().equals(guild1)) {
@@ -646,7 +774,7 @@ public class loggerListener extends ListenerAdapter {
 
                 StringBuilder stringBuilder = new StringBuilder();
 
-                for(Role role : event.getMember().getRoles()) {
+                for(Role role : Objects.requireNonNull(event.getMember()).getRoles()) {
                     stringBuilder.append(role.getName()).append("\n");
                 }
 

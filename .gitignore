@@ -3,6 +3,9 @@
 /build/generated/
 /build/resources/
 /build/tmp/
+.idea
+out
+gradle
 
 # Ignore Gradle GUI config
 gradle-app.setting

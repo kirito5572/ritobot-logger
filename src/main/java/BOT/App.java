@@ -13,6 +13,8 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.utils.ChunkingFilter;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,9 +36,10 @@ public class App {
     private static String PREFIX;
     private final Random random = new Random();
     public static TextChannel textChannel;
-
+    private final config config;
     public App() {
-        new SQL();
+        SQL sql = new SQL();
+        config = new config(sql);
         new Thread(() -> {
             config.config_load();
             try {
@@ -49,8 +52,8 @@ public class App {
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM/dd aa hh:mm:ss z");
         Time = format1.format(date);
         CommandManager manager = new CommandManager();
-        Listener listener = new Listener(manager);
-        loggerListener loggerListener = new loggerListener();
+        Listener listener = new Listener(manager, sql);
+        loggerListener loggerListener = new loggerListener(sql);
         Logger logger = LoggerFactory.getLogger(App.class);
 
         StringBuilder TOKENreader = new StringBuilder();
@@ -112,10 +115,11 @@ public class App {
 
         try {
             logger.info("부팅");
-            JDA jda= new JDABuilder(AccountType.BOT)
-                    .setToken(TOKEN)
+            JDA jda= JDABuilder.createDefault(TOKEN)
                     .setAutoReconnect(true)
                     .addEventListeners(loggerListener, listener)
+                    .setEnabledIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS))
+                    .setChunkingFilter(ChunkingFilter.ALL)
                     .build().awaitReady();
             logger.info("부팅완료");
             try {

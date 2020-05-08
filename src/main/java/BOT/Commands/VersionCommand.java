@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class VersionCommand implements ICommand {
-    private static final String version = "빌드 버젼 V 1.7.4_logger ";
+    private static final String version = "빌드 버젼 V 1.7.5_logger preview 3 ";
     @Override
     public void handle(List<String> args, @NotNull GuildMessageReceivedEvent event) {
         if(App.isDEBUG_MODE() || App.isONLINE_DEBUG()) {

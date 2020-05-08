@@ -25,8 +25,10 @@ public class Listener extends ListenerAdapter {
     private final Logger logger = LoggerFactory.getLogger(Listener.class);
     private static String ID1;
     private static String ID2;
-    public Listener(CommandManager manager) {
+    private final SQL sql;
+    public Listener(CommandManager manager, SQL sql) {
         this.manager = manager;
+        this.sql = sql;
     }
 
     @Override
@@ -81,7 +83,7 @@ public class Listener extends ListenerAdapter {
 
             return;
         }
-        String channelId = SQL.configDownLoad_botchannel(event.getGuild().getId());
+        String channelId = sql.configDownLoad_channel(event.getGuild().getId(), SQL.botChannel);
         if (event.getMessage().getContentRaw().startsWith(Constants.PREFIX)) {
             if(!channelId.equals(event.getChannel().getId())) {
                 if(!channelId.equals("error")) {
@@ -99,7 +101,6 @@ public class Listener extends ListenerAdapter {
             }
             manager.handleCommand(event);
         }
-
     }
     private void shutdown(@NotNull JDA jda, @NotNull GuildMessageReceivedEvent event) {
         new Thread(() -> {

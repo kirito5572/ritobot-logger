@@ -20,6 +20,14 @@ public class SQL {
     private static String user;
     private static String password;
 
+    public static final int textLogging = 7;
+    public static final int channelLogging = 8;
+    public static final int memberLogging = 9;
+    public static final int botChannel = 10;
+    public static final int textLogChannel = 11;
+    public static final int channelLogChannel = 12;
+    public static final int memberLogChannel = 13;
+
     public SQL() {
         //init
         StringBuilder SQLPassword = new StringBuilder();
@@ -67,40 +75,103 @@ public class SQL {
             loggingConnection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
             e.printStackTrace();
+            SQL.reConnection();
         }
     }
 
-    public static String configDownLoad_botchannel(String guildId) {
+    public String configDownLoad_channel(String guildId, int option) {
         String return_data = "error";
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String queryString;
-            queryString = "SELECT * FROM ritobot_config.bot_channel WHERE guildId=" + guildId;
-            System.out.println(queryString);
-            loggingStatement = connection.createStatement();
-            resultSet6 = loggingStatement.executeQuery(queryString);
-            if (resultSet6.next()) {
-                if(resultSet6.getString("disable").equals("0")) {
-                    return_data = resultSet6.getString("channelId");
+        switch (option) {
+            case botChannel:
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    String queryString;
+                    queryString = "SELECT * FROM ritobot_config.bot_channel WHERE guildId=" + guildId;
+                    System.out.println(queryString);
+                    loggingStatement = connection.createStatement();
+                    resultSet6 = loggingStatement.executeQuery(queryString);
+                    if (resultSet6.next()) {
+                        if (resultSet6.getString("disable").equals("0")) {
+                            return_data = resultSet6.getString("channelId");
+                        }
+                    }
+                    resultSet6.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    SQL.reConnection();
+                    return_data = "error";
                 }
-            }
-            resultSet6.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return_data = "error";
+            break;
+            case textLogChannel:
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    String queryString;
+                    queryString = "SELECT * FROM ritobot_config.log_channel WHERE guildId=" + guildId;
+                    System.out.println(queryString);
+                    loggingStatement = connection.createStatement();
+                    resultSet6 = loggingStatement.executeQuery(queryString);
+                    if (resultSet6.next()) {
+                        return_data = resultSet6.getString("messageLog");
+                    }
+                    resultSet6.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    SQL.reConnection();
+                    return_data = "error";
+                }
+                break;
+            case channelLogChannel:
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    String queryString;
+                    queryString = "SELECT * FROM ritobot_config.log_channel WHERE guildId=" + guildId;
+                    System.out.println(queryString);
+                    loggingStatement = connection.createStatement();
+                    resultSet6 = loggingStatement.executeQuery(queryString);
+                    if (resultSet6.next()) {
+                        return_data = resultSet6.getString("channelLog");
+                    }
+                    resultSet6.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    SQL.reConnection();
+                    return_data = "error";
+                }
+                break;
+            case memberLogging:
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    String queryString;
+                    queryString = "SELECT * FROM ritobot_config.log_channel WHERE guildId=" + guildId;
+                    System.out.println(queryString);
+                    loggingStatement = connection.createStatement();
+                    resultSet6 = loggingStatement.executeQuery(queryString);
+                    if (resultSet6.next()) {
+                        return_data = resultSet6.getString("memberLog");
+                    }
+                    resultSet6.close();
+                } catch (Exception e) {
+                    e.printStackTrace();SQL.reConnection();
+                    return_data = "error";
+                }
+                break;
         }
         return return_data;
     }
 
-    public static boolean loggingMessageUpLoad(String guildId, String messageId, String contentRaw, String authorId) {
+    public boolean loggingMessageUpLoad(String guildId, String messageId, String contentRaw, String authorId) {
         String queryString = "INSERT INTO messageLogging VALUE (" + guildId + ","+ messageId + ", '" + contentRaw + "'," + authorId +");";
         System.out.println(queryString);
         try {
             Class.forName(driverName);
 
-            loggingStatement = loggingConnection.createStatement();
-            loggingStatement.executeUpdate(queryString);
-            loggingStatement.close();
+            PreparedStatement preparedStatement = loggingConnection.prepareStatement("INSERT INTO messageLogging VALUES (?, ?, ?, ?)");
+            preparedStatement.setString(1, guildId);
+            preparedStatement.setString(2, messageId);
+            preparedStatement.setString(3, contentRaw);
+            preparedStatement.setString(4, authorId);
+            preparedStatement.execute();
+            preparedStatement.close();
         } catch (Exception e) {
             StackTraceElement[] eStackTrace = e.getStackTrace();
             StringBuilder a = new StringBuilder();
@@ -118,15 +189,16 @@ public class SQL {
         return true;
     }
 
-    public static boolean loggingMessageUpdate(String guildId, String messageId, String contentRaw) {
-        String queryString = "UPDATE messageLogging SET ContentRaw = '" + contentRaw + "' WHERE GuildId = '" + guildId + "' AND MessageId = '" + messageId + "';";
-        System.out.println(queryString);
+    public boolean loggingMessageUpdate(String guildId, String messageId, String contentRaw) {
         try {
             Class.forName(driverName);
 
-            loggingStatement = loggingConnection.createStatement();
-            loggingStatement.executeUpdate(queryString);
-            loggingStatement.close();
+            PreparedStatement preparedStatement = loggingConnection.prepareStatement("UPDATE messageLogging SET ContentRaw = ? WHERE GuildId =? AND MessageId = ?");
+            preparedStatement.setString(1, contentRaw);
+            preparedStatement.setString(2, guildId);
+            preparedStatement.setString(3, messageId);
+            preparedStatement.execute();
+            preparedStatement.close();
         } catch (Exception e) {
             StackTraceElement[] eStackTrace = e.getStackTrace();
             StringBuilder a = new StringBuilder();
@@ -145,7 +217,7 @@ public class SQL {
     }
 
     @NotNull
-    public static String[] loggingMessageDownLoad(String guildId, String messageId) {
+    public String[] loggingMessageDownLoad(String guildId, String messageId) {
         String[] data = new String[2];
         String queryString = "SELECT * FROM messageLogging WHERE MessageId=" + messageId + " AND GuildId=" + guildId + ";";
         System.out.println(queryString);
@@ -179,12 +251,9 @@ public class SQL {
 
         return data;
     }
-    public static final int textLogging = 7;
-    public static final int channelLogging = 8;
-    public static final int memberLogging = 9;
 
     @NotNull
-    public static String[] configDownLoad(int option) {
+    public String[] configDownLoad(int option) {
         String[] return_data = new String[] {"error"};
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -245,33 +314,37 @@ public class SQL {
             }
             resultSet6.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();SQL.reConnection();
             return_data = new String [] {"error"};
         }
         return return_data;
     }
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
         return connection;
     }
 
-    public static void setConnection(Connection connection) {
-        SQL.connection = connection;
+    public static void reConnection() {
+        try {
+            connection = DriverManager.getConnection(url, user, password);
+        } catch (SQLException e) {
+            e.printStackTrace();SQL.reConnection();
+        }
     }
 
-    public static void setLoggingConnection(Connection loggingConnection) {
+    public void setLoggingConnection(Connection loggingConnection) {
         SQL.loggingConnection = loggingConnection;
     }
 
-    public static String getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public static String getUser() {
+    public String getUser() {
         return user;
     }
 
-    public static String getPassword() {
+    public String getPassword() {
         return password;
     }
 }
