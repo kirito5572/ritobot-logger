@@ -2,6 +2,18 @@ package BOT.Listener;
 
 import BOT.Objects.SQL;
 import BOT.Objects.config;
+import com.amazonaws.SdkClientException;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.GetObjectRequest;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.S3Object;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.*;
 import net.dv8tion.jda.api.audit.AuditLogChange;
@@ -31,6 +43,12 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import java.awt.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -72,6 +90,18 @@ public class loggerListener extends ListenerAdapter {
                 }
                 if (messageContent.contains("\\'")) {
                     messageContent = messageContent.replace("\\'", "\\\\'");
+                }
+                List<Message.Attachment> files = message.getAttachments();
+                if(!files.isEmpty()) {
+                    int i = 0;
+                    for(Message.Attachment attachment : files) {
+                        if(attachment.isImage()) {
+                            i++;
+                            File file = attachment.downloadToFile().join();
+                            S3UploadObject(file, messageId + "_" + i);
+                            file.delete();
+                        }
+                    }
                 }
                 final boolean[] temp = {sql.loggingMessageUpLoad(guild.getId(), messageId, messageContent, authorId)};
                 String finalMessageContent = messageContent;
@@ -188,10 +218,13 @@ public class loggerListener extends ListenerAdapter {
         Guild guild = event.getGuild();
         for(String guild1 : config.getTextLoggingEnable()) {
             if (guild.getId().equals(guild1)) {
+                File file = S3DownloadObject(messageId + "_" + 1);
                 String[] data = sql.loggingMessageDownLoad(guild.getId(), messageId);
                 try {
                     if (data[0].length() < 2) {
-                        return;
+                        if(file == null) {
+                            return;
+                        }
                     }
                 } catch (NullPointerException e) {
                     return;
@@ -201,8 +234,15 @@ public class loggerListener extends ListenerAdapter {
                 SimpleDateFormat format2 = new SimpleDateFormat("yyyy년 MM월dd일 HH시mm분ss초");
 
                 Date time = new Date();
-
                 String time2 = format2.format(time);
+                if(file != null) {
+                    if(data[0].length() < 2) {
+                        data[0] = "사진 파일만 있는 메세지";
+                    }
+                }
+                if(data[0].length() > 1024) {
+                    data[0] = "1024자 초과로 인한 처리 불가";
+                }
                 EmbedBuilder builder = EmbedUtils.defaultEmbed()
                         .setTitle("삭제된 메세지")
                         .setColor(Color.RED)
@@ -212,6 +252,36 @@ public class loggerListener extends ListenerAdapter {
                         .addField("삭제 시간", time2, false)
                         .setFooter((member.getEffectiveName() + "(" + member.getEffectiveName() + ")"), member.getUser().getAvatarUrl());
                 messageLoggingSend(builder, guild);
+                if(file != null) {
+                    messageLoggingSend(file, guild);
+                }
+                if(file != null) {
+                    file.delete();
+                }
+            }
+        }
+    }
+    private void messageLoggingSend(@NotNull File file, @NotNull Guild guild) {
+        String channelId = sql.configDownLoad_channel(guild.getId(), SQL.textLogChannel);
+        boolean a = false;
+        if(!channelId.equals("error")) {
+            try {
+                Objects.requireNonNull(guild.getTextChannelById(channelId)).sendFile(file).queue();
+                a = true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                a = false;
+            }
+        }
+        if(!a) {
+            List<TextChannel> channels = guild.getTextChannelsByName("채팅-로그", false);
+            if (!channels.isEmpty()) {
+                channels.get(0).sendFile(file).queue();
+            } else {
+                List<TextChannel> channels1 = guild.getTextChannelsByName("chat-logs", false);
+                if (!channels.isEmpty()) {
+                    channels1.get(0).sendFile(file).queue();
+                }
             }
         }
     }
@@ -1104,6 +1174,57 @@ public class loggerListener extends ListenerAdapter {
                         .addField("변경 시간", time2, false);
                 channelLoggingSend(builder, guild);
             }
+        }
+    }
+
+    private void S3UploadObject(File file, String messageId) {
+        Regions clientRegion = Regions.AP_NORTHEAST_2;
+        String bucketName = "ritobot-logger";
+
+        try {
+            AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+                    .withRegion(clientRegion)
+                    .withCredentials(new EnvironmentVariableCredentialsProvider())
+                    .build();
+
+            PutObjectRequest request = new PutObjectRequest(bucketName, messageId, file);
+            ObjectMetadata metadata = new ObjectMetadata();
+            request.setMetadata(metadata);
+            s3Client.putObject(request);
+        } catch (SdkClientException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private File S3DownloadObject(String messageId) {
+        Regions clientRegion = Regions.AP_NORTHEAST_2;
+        String bucketName = "ritobot-logger";
+
+        try {
+            AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+                    .withRegion(clientRegion)
+                    .withCredentials(new EnvironmentVariableCredentialsProvider())
+                    .build();
+
+            GetObjectRequest request = new GetObjectRequest(bucketName, messageId);
+            S3Object object = s3Client.getObject(request);
+            ObjectMetadata metadata = object.getObjectMetadata();
+            InputStream inputStream = object.getObjectContent();
+            Path path = Files.createTempFile(messageId, "." + metadata.getContentType().split("/")[1]);
+            try (FileOutputStream out = new FileOutputStream(path.toFile())) {
+                byte[] buffer = new byte[1024];
+                int len;
+                while ((len = inputStream.read(buffer)) != -1) {
+                    out.write(buffer, 0, len);
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+                return null;
+            }
+            return path.toFile();
+
+        } catch (SdkClientException | IOException e) {
+            return null;
         }
     }
 }
