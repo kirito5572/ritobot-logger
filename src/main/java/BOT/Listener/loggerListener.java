@@ -2,6 +2,7 @@ package BOT.Listener;
 
 import BOT.Objects.SQL;
 import BOT.Objects.config;
+import com.amazonaws.ClientConfiguration;
 import com.amazonaws.SdkClientException;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -10,12 +11,10 @@ import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.GetObjectRequest;
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.model.*;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.*;
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.audit.AuditLogChange;
 import net.dv8tion.jda.api.audit.AuditLogEntry;
 import net.dv8tion.jda.api.entities.*;
@@ -1190,6 +1189,7 @@ public class loggerListener extends ListenerAdapter {
             PutObjectRequest request = new PutObjectRequest(bucketName, messageId, file);
             ObjectMetadata metadata = new ObjectMetadata();
             request.setMetadata(metadata);
+            request.setStorageClass(StorageClass.StandardInfrequentAccess);
             s3Client.putObject(request);
         } catch (SdkClientException e) {
             e.printStackTrace();
