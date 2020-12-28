@@ -165,7 +165,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("수정된 메세지")
                         .setColor(Color.ORANGE)
                         .setDescription("메세지 수정: " + event.getChannel().getAsMention() + "\n" +
@@ -242,7 +242,7 @@ public class loggerListener extends ListenerAdapter {
                 if(data[0].length() > 1024) {
                     data[0] = "1024자 초과로 인한 처리 불가";
                 }
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("삭제된 메세지")
                         .setColor(Color.RED)
                         .setDescription("메세지 삭제: " + event.getChannel().getAsMention())
@@ -404,7 +404,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("텍스트 채널 이름 변경")
                         .setColor(Color.GREEN)
                         .addField("이전 이름", event.getOldName(), false)
@@ -428,7 +428,7 @@ public class loggerListener extends ListenerAdapter {
                 if(topic == null) {
                     topic = "없음";
                 }
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("텍스트 채널 토픽 변경")
                         .setColor(Color.GREEN)
                         .addField("채널명", event.getChannel().getName(), false)
@@ -449,7 +449,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed();
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
                 StringBuilder stringBuilder = new StringBuilder();
                 for(Permission permission : event.getPermissionOverride().getAllowed()) {
                     stringBuilder.append("\u2795").append(permission.getName()).append("\n");
@@ -520,7 +520,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed();
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
                 switch(event.getChannelType()) {
                     case CATEGORY:
                         if (event.getPermissionOverride().isRoleOverride()) {
@@ -578,13 +578,13 @@ public class loggerListener extends ListenerAdapter {
                 String time2 = format2.format(time);
                 EmbedBuilder builder;
                 if(event.getOldNSFW()) {
-                    builder = EmbedUtils.defaultEmbed()
+                    builder = EmbedUtils.getDefaultEmbed()
                             .setTitle("후방 주의 채널 해제")
                             .setColor(Color.GREEN)
                             .addField("채널명", event.getChannel().getAsMention(), false)
                             .addField("변경 시간", time2, false);
                 } else {
-                    builder = EmbedUtils.defaultEmbed()
+                    builder = EmbedUtils.getDefaultEmbed()
                             .setTitle("후방 주의 채널 지정")
                             .setColor(Color.RED)
                             .addField("채널명", event.getChannel().getAsMention(), false)
@@ -604,7 +604,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                             .setTitle("텍스트 채널 슬로우 모드 지정")
                             .setColor(Color.YELLOW)
                             .addField("채널명", event.getChannel().getAsMention(), false)
@@ -625,7 +625,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("텍스트 채널 생성")
                         .setColor(Color.GREEN)
                         .addField("채널명", event.getChannel().getAsMention(), false)
@@ -644,7 +644,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("텍스트 채널 삭제")
                         .setColor(Color.RED)
                         .addField("채널명", event.getChannel().getName(), false)
@@ -663,7 +663,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("보이스 채널 생성")
                         .setColor(Color.GREEN)
                         .addField("채널명", event.getChannel().getName(), false)
@@ -682,7 +682,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("보이스 채널 삭제")
                         .setColor(Color.RED)
                         .addField("채널명", event.getChannel().getName(), false)
@@ -701,7 +701,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("보이스 채널 이름 변경")
                         .setColor(Color.YELLOW)
                         .addField("이전 이름", event.getOldName(), false)
@@ -721,7 +721,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("보이스 채널 유저 제한 수 변경")
                         .setColor(Color.YELLOW)
                         .addField("채널명", event.getChannel().getName(), false)
@@ -742,7 +742,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("보이스 채널 비트레이트 변경")
                         .setColor(Color.YELLOW)
                         .addField("채널명", event.getChannel().getName(), false)
@@ -763,7 +763,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("카테고리 삭제")
                         .setColor(Color.RED)
                         .addField("카테고리명", event.getCategory().getName(), false)
@@ -782,7 +782,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("카테고리 이름 변경")
                         .setColor(Color.ORANGE)
                         .addField("이전 이름", event.getOldName(), false)
@@ -802,7 +802,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("카테고리 생성")
                         .setColor(Color.GREEN)
                         .addField("카테고리명", event.getCategory().getName(), false)
@@ -821,7 +821,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("유저 입장")
                         .setDescription(event.getMember().getAsMention() + "유저가 서버에 들어왔습니다.")
                         .setColor(Color.GREEN)
@@ -848,7 +848,7 @@ public class loggerListener extends ListenerAdapter {
                 }
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("유저 퇴장")
                         .setDescription(event.getMember().getAsMention() + "유저가 서버에서 나갔습니다.")
                         .setColor(Color.RED)
@@ -877,7 +877,7 @@ public class loggerListener extends ListenerAdapter {
                 }
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("유저 역할 추가")
                         .setDescription("대상유저:" + event.getMember().getAsMention())
                         .setColor(Color.GREEN)
@@ -904,7 +904,7 @@ public class loggerListener extends ListenerAdapter {
                 }
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("유저 역할 삭제")
                         .setDescription("대상유저:" + event.getMember().getAsMention())
                         .setColor(Color.RED)
@@ -929,7 +929,7 @@ public class loggerListener extends ListenerAdapter {
                 if(nickname == null) {
                     nickname = "없음";
                 }
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("유저 닉네임 변경")
                         .setDescription("대상유저:" + event.getMember().getAsMention())
                         .setColor(Color.GREEN)
@@ -950,7 +950,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("유저 밴")
                         .setDescription("대상유저:" + event.getUser().getAsTag())
                         .setColor(Color.RED)
@@ -969,7 +969,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("유저 밴 헤제")
                         .setDescription("대상유저:" + event.getUser().getAsTag())
                         .setColor(Color.GREEN)
@@ -988,7 +988,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed();
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed();
                 if(event.isGuildMuted()) {
                     builder.setTitle("유저 강제 뮤트")
                             .setDescription("대상유저:" + event.getMember().getEffectiveName() + "(" + event.getMember().getAsMention() + ")")
@@ -1019,7 +1019,7 @@ public class loggerListener extends ListenerAdapter {
                 for(Permission permission : role.getPermissions()) {
                     stringBuilder.append(permission.getName()).append("\n");
                 }
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("역할 생성")
                         .setColor(role.getColor())
                         .addField("역할명", role.getName() + "(" + role.getAsMention() + ")", false)
@@ -1049,7 +1049,7 @@ public class loggerListener extends ListenerAdapter {
                 for(Permission permission : role.getPermissions()) {
                     stringBuilder.append(permission.getName()).append("\n");
                 }
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("역할 삭제")
                         .setColor(role.getColor())
                         .addField("역할명", role.getName(), false)
@@ -1071,7 +1071,7 @@ public class loggerListener extends ListenerAdapter {
         for(Permission permission : role.getPermissions()) {
             stringBuilder.append(permission.getName()).append("\n");
         }
-        EmbedBuilder builder = EmbedUtils.defaultEmbed()
+        EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                 .setTitle("역할 변경")
                 .setColor(role.getColor())
                 .addField("역할명", role.getName() +  "(" + role.getAsMention() + ")", false)
@@ -1144,7 +1144,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("서버 이모지 추가")
                         .setColor(Color.GREEN)
                         .addField("이모지명", emote.getName(), false)
@@ -1165,7 +1165,7 @@ public class loggerListener extends ListenerAdapter {
                 Date time = new Date();
 
                 String time2 = format2.format(time);
-                EmbedBuilder builder = EmbedUtils.defaultEmbed()
+                EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                         .setTitle("서버 이모지 제거")
                         .setColor(Color.GREEN)
                         .addField("이모지명", emote.getName(), false)

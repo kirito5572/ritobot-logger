@@ -19,7 +19,7 @@ public class upTimeCommand implements ICommand {
         Date upTime = new Date(temp);
         SimpleDateFormat format = new SimpleDateFormat( "yyyy/MM/dd aa hh:mm:ss z");
         String nowTime = format.format(nowDate);
-        EmbedBuilder builder = EmbedUtils.defaultEmbed()
+        EmbedBuilder builder = EmbedUtils.getDefaultEmbed()
                 .setTitle("logger_core 가동 시간")
                 .addField("가동 시작 시간", App.getTime(), false)
                 .addField("현재 시간", nowTime, false)
