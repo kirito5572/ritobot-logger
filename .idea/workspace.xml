@@ -12,11 +12,12 @@
   <component name="ChangeListManager">
     <list default="true" id="37fe3ce4-5292-4a9e-8592-af67e32a80f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/ritobot-logger-1.7.x_logger-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/ritobot-logger-1.7.x_logger-all.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/BOT/Objects/SQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/BOT/Objects/SQL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BOT/Commands/upTimeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BOT/Commands/upTimeCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BOT/Listener/loggerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BOT/Listener/loggerListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/BOT/Commands/PingCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/BOT/Commands/PingCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/BOT/Commands/VersionCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/BOT/Commands/VersionCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/BOT/Commands/upTimeCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/BOT/Commands/upTimeCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/BOT/Listener/Listener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/BOT/Listener/Listener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/BOT/Listener/loggerListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/BOT/Listener/loggerListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/BOT/Objects/CommandManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/BOT/Objects/CommandManager.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +113,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="discord-application" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -133,7 +134,7 @@
       <recent name="C:\Users\ruby0\Documents\GitHub\DiscordBOT\src\main\java\BOT\Commands\Music" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.DiscordBOT [shadowJar]">
+  <component name="RunManager" selected="Gradle.Discord_BOT [dependencies]">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="BOT.App" />
       <module name="ritobot-logger.main" />
@@ -177,7 +178,9 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="DiscordBOT [wrapper]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -196,7 +199,9 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="Discord_BOT [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -215,7 +220,9 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="ritobot-logger-1.7.x_logger-all.jar" type="JarApplication" temporary="true">
@@ -224,11 +231,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
+        <item itemvalue="애플리케이션.App" />
+        <item itemvalue="JAR 애플리케이션.ritobot-logger-1.7.x_logger-all.jar" />
         <item itemvalue="Gradle.Discord_BOT [dependencies]" />
-        <item itemvalue="JAR Application.ritobot-logger-1.7.x_logger-all.jar" />
-        <item itemvalue="Application.main" />
         <item itemvalue="Gradle.DiscordBOT [wrapper]" />
+        <item itemvalue="애플리케이션.main" />
       </list>
     </recent_temporary>
   </component>
@@ -421,6 +428,10 @@
       <workItem from="1599398491305" duration="9000" />
       <workItem from="1606487589889" duration="535000" />
       <workItem from="1606488399941" duration="13000" />
+      <workItem from="1614939498057" duration="620000" />
+      <workItem from="1615462552029" duration="101000" />
+      <workItem from="1615462676546" duration="64000" />
+      <workItem from="1616491016808" duration="2461000" />
     </task>
     <servers />
   </component>
@@ -444,23 +455,5 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1879" height="284" key="GridCell.Tab.0.bottom" timestamp="1606488128801">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1879" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606488128801" />
-    <state width="1879" height="284" key="GridCell.Tab.0.center" timestamp="1606488128801">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1879" height="284" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606488128801" />
-    <state width="1879" height="284" key="GridCell.Tab.0.left" timestamp="1606488128800">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1879" height="284" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606488128800" />
-    <state width="1879" height="284" key="GridCell.Tab.0.right" timestamp="1606488128801">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1879" height="284" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606488128801" />
   </component>
 </project>
